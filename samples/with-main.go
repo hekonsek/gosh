@@ -1,6 +1,8 @@
-// require github.com/hekonsek/random-strings 0.0.0
+// require github.com/fatih/color v1.7.0
 package main
 
+import "github.com/fatih/color"
+
 func main() {
-	println("Hello world!")
+	color.Green("Hello world!\n")
 }
