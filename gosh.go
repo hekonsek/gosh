@@ -57,8 +57,10 @@ go 1.12
 		scriptExec := exec.Command("go", "run", filepath.Base(scriptArg))
 		scriptExec.Dir = tmpScriptDir
 		scriptExec.Env = append(os.Environ(), "GO111MODULE=on")
-		out, err := scriptExec.CombinedOutput()
-		fmt.Print(string(out))
+		scriptExec.Stdin = os.Stdin
+		scriptExec.Stdout = os.Stdout
+		scriptExec.Stderr = os.Stderr
+		err = scriptExec.Run()
 		if err != nil {
 			panic(err)
 		}
